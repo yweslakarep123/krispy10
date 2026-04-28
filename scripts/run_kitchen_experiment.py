@@ -21,6 +21,7 @@ import os
 import random
 import sys
 import time
+import traceback
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Dict, List, Optional
@@ -212,6 +213,19 @@ def _train_one_pass(
     for epoch in pbar:
         epoch_losses: List[float] = []
         for step_idx, batch in enumerate(train_loader):
+            # region agent log
+            if epoch == 0 and step_idx == 0:
+                _debug_log(
+                    "H5",
+                    "scripts/run_kitchen_experiment.py:216",
+                    "first-train-batch-structure",
+                    {
+                        "batch_type": type(batch).__name__,
+                        "is_dict": isinstance(batch, dict),
+                        "keys": list(batch.keys()) if isinstance(batch, dict) else [],
+                    },
+                )
+            # endregion
             batch = {
                 "obs": {k: v.to(device, non_blocking=True) for k, v in batch["obs"].items()},
                 "action": batch["action"].to(device, non_blocking=True),
@@ -231,6 +245,19 @@ def _train_one_pass(
             val_losses: List[float] = []
             with torch.no_grad():
                 for batch in val_loader:
+                    # region agent log
+                    if epoch == 0:
+                        _debug_log(
+                            "H5",
+                            "scripts/run_kitchen_experiment.py:244",
+                            "first-val-batch-structure",
+                            {
+                                "batch_type": type(batch).__name__,
+                                "is_dict": isinstance(batch, dict),
+                                "keys": list(batch.keys()) if isinstance(batch, dict) else [],
+                            },
+                        )
+                    # endregion
                     batch = {
                         "obs": {k: v.to(device, non_blocking=True) for k, v in batch["obs"].items()},
                         "action": batch["action"].to(device, non_blocking=True),
@@ -308,6 +335,20 @@ def _kfold_score_candidate(
             )
         except Exception as exc:
             cprint(f"[search] proxy training failed: {type(exc).__name__}: {exc}", "red")
+            # region agent log
+            _debug_log(
+                "H4",
+                "scripts/run_kitchen_experiment.py:338",
+                "proxy-training-exception",
+                {
+                    "error_type": type(exc).__name__,
+                    "error": str(exc),
+                    "traceback": traceback.format_exc(limit=8),
+                    "params_keys": list(params.keys()) if isinstance(params, dict) else [],
+                    "params_batch_size": params.get("batch_size") if isinstance(params, dict) else None,
+                },
+            )
+            # endregion
             del train_loader, val_loader
             torch.cuda.empty_cache()
             return float("inf")
