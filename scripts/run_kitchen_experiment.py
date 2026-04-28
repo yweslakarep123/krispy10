@@ -38,9 +38,64 @@ PKG_ROOT = REPO_ROOT / "FlowPolicy"
 sys.path.insert(0, str(PKG_ROOT))
 sys.path.insert(0, str(REPO_ROOT))
 
-from flow_policy_3d.dataset.kitchen_lowdim_dataset import KitchenLowdimDataset  # noqa: E402
-from flow_policy_3d.env_runner.kitchen_runner import KitchenRunner  # noqa: E402
-from flow_policy_3d.policy.flowpolicy_lowdim import FlowPolicyLowdim  # noqa: E402
+# region agent log helpers
+def _debug_log(hypothesis_id: str, location: str, message: str, data: Dict[str, Any]) -> None:
+    payload = {
+        "sessionId": "a2c3d3",
+        "runId": "pre-fix",
+        "hypothesisId": hypothesis_id,
+        "location": location,
+        "message": message,
+        "data": data,
+        "timestamp": int(time.time() * 1000),
+    }
+    with open("debug-a2c3d3.log", "a", encoding="utf-8") as f:
+        f.write(json.dumps(payload, ensure_ascii=True) + "\n")
+
+
+# endregion
+
+# region agent log import-precheck
+try:
+    import zarr as _dbg_zarr  # noqa: E402
+    import numcodecs as _dbg_numcodecs  # noqa: E402
+    _debug_log(
+        "H1",
+        "scripts/run_kitchen_experiment.py:52",
+        "zarr/numcodecs precheck success",
+        {
+            "zarr_version": getattr(_dbg_zarr, "__version__", "unknown"),
+            "numcodecs_version": getattr(_dbg_numcodecs, "__version__", "unknown"),
+            "python_version": sys.version.split()[0],
+        },
+    )
+except Exception as _dbg_exc:
+    _debug_log(
+        "H1",
+        "scripts/run_kitchen_experiment.py:64",
+        "zarr/numcodecs precheck failure",
+        {
+            "error_type": type(_dbg_exc).__name__,
+            "error": str(_dbg_exc),
+            "python_version": sys.version.split()[0],
+        },
+    )
+# endregion
+
+try:
+    from flow_policy_3d.dataset.kitchen_lowdim_dataset import KitchenLowdimDataset  # noqa: E402
+    from flow_policy_3d.env_runner.kitchen_runner import KitchenRunner  # noqa: E402
+    from flow_policy_3d.policy.flowpolicy_lowdim import FlowPolicyLowdim  # noqa: E402
+except Exception as _import_exc:
+    # region agent log import-failure
+    _debug_log(
+        "H2",
+        "scripts/run_kitchen_experiment.py:82",
+        "flow_policy import failure",
+        {"error_type": type(_import_exc).__name__, "error": str(_import_exc)},
+    )
+    # endregion
+    raise
 from scripts.kitchen_search_space import (  # noqa: E402
     full_param_grid,
     horizon_from,
