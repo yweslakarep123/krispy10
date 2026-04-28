@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlowPolicy - Supplementary Materials</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        h1 {
+            text-align: center;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .section {
+            margin-bottom: 40px;
+            width: 80%;
+        }
+        .section h2 {
+            text-align: left;
+            margin-bottom: 10px;
+        }
+        .section p {
+            text-align: left;
+            margin-bottom: 20px;
+            font-size: 1em;
+            line-height: 1.5;
+        }
+        .video-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .video-item {
+            text-align: center;
+            flex-direction: column;
+            display: flex;
+            align-items: center;
+        }
+        .video-item.adroit {
+            width: 30%;
+        }
+        .video-item.metaworld {
+            width: 15%;
+        }
+        .video-item.more-results {
+            width: 22.5%;
+        }
+        video {
+            width: 100%;
+            height: auto;
+        }
+        .title {
+            margin-top: 10px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>FlowPolicy: Enabling Fast and Robust 3D Flow-based Policy via Consistency Flow Matching for Robot Manipulation</h1>
+    <h2>Supplementary Materials</h2>
+
+    <!-- Adroit Section -->
+    <div class="section">
+        <h2>Results on Adroit</h2>
+        <p>We present the results of the proposed FlowPolicy on Adroit. The Adroit environment contains three dexterity tasks which are Hammer, Door and Pen.
+            In Adroit environment, the tasks focus on dexterous manipulation using a robotic hand. The challenges involve precise control and coordination of multiple fingers to achieve specific goals. The following videos demonstrate these tasks:</p>
+        <div class="video-row">
+            <div class="video-item adroit">
+                <video controls>
+                    <source src="results/adroit/1-hammer.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="title">(1) Hammer</p>
+            </div>
+            <div class="video-item adroit">
+                <video controls>
+                    <source src="results/adroit/2-door.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="title">(2) Door</p>
+            </div>
+            <div class="video-item adroit">
+                <video controls>
+                    <source src="results/adroit/3-pen.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="title">(3) Pen</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MetaWorld Section -->
+    <div class="section">
+        <h2>Results on MetaWorld</h2>
+        <p>We also illustrate the results of the proposed FlowPolicy in Metaworld. 
+            The MetaWorld environment presents a diverse set of manipulation tasks in a simulated setting. 
+            It covers four difficulty levels including easy, medium, hard and very hard.
+            These tasks require the robot to interact with various objects, demonstrating versatility and adaptability. 
+            FlowPolicy performed the majority of the tasks well, and the following video demonstrates these tasks:</p>
+
+        <!-- First 5 rows with 6 videos each -->
+        <!-- 1 -->
+        <div class="video-row">
+            <div class="video-item metaworld">
+                <video controls>
+                    <source src="results/metaworld/1-button-press.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="title">(1) Button Press</p>
+            </div>
+            <div class="video-item metaworld">
+                <video controls>
+                    <source src="results/metaworld/2-button-press-wall.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="title">(2) Button Press Wall</p>
+            </div>
+            <div class="video-item metaworld">
+                <video controls>
+                    <source src="results/metaworld/3-dial-turn.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="title">(3) Dial Turn</p>
+            </div>
+            <div class="video-item metaworld">
+                <video controls>
+                    <source src="results/metaworld/4-door-close.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="title">(4) Door Close</p>
+            </div>
+            <div class="video-item metaworld">
+                <video controls>
+                    <source src="results/metaworld/5-door-open.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="title">(5) Door Open</p>
+            </div>
+            <div class="video-item metaworld">
+                <video controls>
+                    <source src="results/metaworld/6-door-unlock.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="title">(6) Door Unlock</p>
+            </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="video-row">
+          <div class="video-item metaworld">
+              <video controls>
+                  <source src="results/metaworld/7-drawer-close.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+              </video>
+              <p class="title">(7) Drawer Close</p>
+          </div>
+          <div class="video-item metaworld">
+              <video controls>
+                  <source src="results/metaworld/8-faucet-close.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+              </video>
+              <p class="title">(8) Faucet Close</p>
+          </div>
+          <div class="video-item metaworld">
+              <video controls>
+                  <source src="results/metaworld/9-faucet-open.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+              </video>
+              <p class="title">(9) Faucet Open</p>
+          </div>
+          <div class="video-item metaworld">
+              <video controls>
+                  <source src="results/metaworld/10-handle-press.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+              </video>
+              <p class="title">(10) Handle Press</p>
+          </div>
+          <div class="video-item metaworld">
+              <video controls>
+                  <source src="results/metaworld/11-handle-pull.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+              </video>
+              <p class="title">(11) Handle Pull</p>
+          </div>
+          <div class="video-item metaworld">
+              <video controls>
+                  <source src="results/metaworld/12-lever-pull.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+              </video>
+              <p class="title">(12) Lever Pull</p>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="video-row">
+          <div class="video-item metaworld">
+              <video controls>
+                  <source src="results/metaworld/13-plate-slide.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+              </video>
+              <p class="title">(13) Plate Slide</p>
+          </div>
+          <div class="video-item metaworld">
+              <video controls>
+                  <source src="results/metaworld/14-plate-slide-back.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+              </video>
+              <p class="title">(14) Plate Slide Back</p>
+          </div>
+          <div class="video-item metaworld">
+              <video controls>
+                  <source src="results/metaworld/15-plate-slide-back-side.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+              </video>
+              <p class="title">(15) Plate Slide Back Side</p>
+          </div>
+          <div class="video-item metaworld">
+              <video controls>
+                  <source src="results/metaworld/16-plate-slide-side.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+              </video>
+              <p class="title">(16) Plate Slide Side</p>
+          </div>
+          <div class="video-item metaworld">
+              <video controls>
+                  <source src="results/metaworld/17-reach.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+              </video>
+              <p class="title">(17) Reach</p>
+          </div>
+          <div class="video-item metaworld">
+              <video controls>
+                  <source src="results/metaworld/18-reach-wall.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+              </video>
+              <p class="title">(18) Reach Wall</p>
+          </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="video-row">
+          <div class="video-item metaworld">
+              <video controls>
+                  <source src="results/metaworld/19-window-close.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+              </video>
+              <p class="title">(19) Window Close</p>
+          </div>
+          <div class="video-item metaworld">
+              <video controls>
+                  <source src="results/metaworld/20-window-open.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+              </video>
+              <p class="title">(20) Window Open</p>
+          </div>
+          <div class="video-item metaworld">
+              <video controls>
+                  <source src="results/metaworld/21-peg-unplug-side.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+              </video>
+              <p class="title">(21) Peg Unplug Side</p>
+          </div>
+          <div class="video-item metaworld">
+              <video controls>
+                  <source src="results/metaworld/22-coffee-pull.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+              </video>
+              <p class="title">(22) Coffee Pull</p>
+          </div>
+          <div class="video-item metaworld">
+              <video controls>
+                  <source src="results/metaworld/23-hammer.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+              </video>
+              <p class="title">(23) Hammer</p>
+          </div>
+          <div class="video-item metaworld">
+              <video controls>
+                  <source src="results/metaworld/24-peg-insert-side.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+              </video>
+              <p class="title">(24) Peg Insert Side</p>
+          </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="video-row">
+          <div class="video-item metaworld">
+              <video controls>
+                  <source src="results/metaworld/25-soccer.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+              </video>
+              <p class="title">(25) Soccer</p>
+          </div>
+          <div class="video-item metaworld">
+              <video controls>
+                  <source src="results/metaworld/26-assembly.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+              </video>
+              <p class="title">(26) Assembly</p>
+          </div>
+          <div class="video-item metaworld">
+              <video controls>
+                  <source src="results/metaworld/27-hand-insert.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+              </video>
+              <p class="title">(27) Hand Insert</p>
+          </div>
+          <div class="video-item metaworld">
+              <video controls>
+                  <source src="results/metaworld/28-pick-place.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+              </video>
+              <p class="title">(28) Pick Place</p>
+          </div>
+          <div class="video-item metaworld">
+              <video controls>
+                  <source src="results/metaworld/29-push.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+              </video>
+              <p class="title">(29) Push</p>
+          </div>
+          <div class="video-item metaworld">
+              <video controls>
+                  <source src="results/metaworld/30-disassemble.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+              </video>
+              <p class="title">(30) Disassemble</p>
+          </div>
+        </div>
+
+        <!-- Repeat the above block for each additional row, adjusting video src and titles accordingly -->
+
+        <!-- Last row with 4 videos -->
+        <div class="video-row">
+            <div class="video-item metaworld">
+                <video controls>
+                    <source src="results/metaworld/31-stick-pull.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="title">(31) Stick Pull</p>
+            </div>
+            <div class="video-item metaworld">
+                <video controls>
+                    <source src="results/metaworld/32-stick-push.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="title">(32) Stick Push</p>
+            </div>
+            <div class="video-item metaworld">
+                <video controls>
+                    <source src="results/metaworld/33-pick-place-wall.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="title">(33) Pick Place Wall</p>
+            </div>
+            <div class="video-item metaworld">
+                <video controls>
+                    <source src="results/metaworld/34-shelf-place.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="title">(34) Shelf Place</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- More Results Section -->
+    <div class="section">
+        <h2>Qualitative Comparisons with DP3</h2>
+        <p>This section presents additional results to the qualitative examples analyzed in the main paper, 
+            in the form of videos to visualize and understand the quality and robustness of the tasks accomplished by FlowPolicy. 
+            As in the 'Pen' task in Adroit, FlowPolicy generates higher quality action sequences to turn the pen to the most appropriate angle. 
+            For the hard task 'Pick Place' in Metaworld, FlowPolicy correctly locates the position of the red cube and successfully transports it to the target location.
+
+            :</p>
+
+        <!-- Rows with 4 videos in 2 groups, each group contains 2 videos -->
+        <div class="video-row">
+            <div class="video-item more-results">
+                <video controls>
+                    <source src="results/more_results/1-DP3-pen.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="title">DP3: Pen</p>
+            </div>
+            <div class="video-item more-results">
+                <video controls>
+                    <source src="results/more_results/1-FlowPolicy-pen.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="title">FlowPolicy (Ours): Pen</p>
+            </div>
+            <div class="video-item more-results">
+                <video controls>
+                    <source src="results/more_results/2-DP3-pick-place.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="title">DP3: Pick Place</p>
+            </div>
+            <div class="video-item more-results">
+                <video controls>
+                    <source src="results/more_results/2-FlowPolicy-pick-place.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="title">FlowPolicy (Ours): Pick Place</p>
+            </div>
+        </div>
+
+        <!-- Add more rows as needed -->
+
+    </div>
+
+</body>
+</html>

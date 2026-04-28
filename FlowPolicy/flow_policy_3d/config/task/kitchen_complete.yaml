@@ -1,0 +1,42 @@
+name: kitchen_complete
+
+task_name: kitchen_complete
+
+shape_meta: &shape_meta
+  obs:
+    state:
+      shape: [60]
+      type: low_dim
+  action:
+    shape: [9]
+
+env_runner:
+  _target_: flow_policy_3d.env_runner.kitchen_runner.KitchenRunner
+  eval_episodes: 10
+  max_steps: 280
+  n_obs_steps: ${n_obs_steps}
+  n_action_steps: ${n_action_steps}
+  fps: 12
+  tasks:
+    - microwave
+    - kettle
+    - bottom burner
+    - light switch
+  record_video: true
+  target_state_dim: 60
+
+dataset:
+  _target_: flow_policy_3d.dataset.kitchen_lowdim_dataset.KitchenLowdimDataset
+  horizon: ${horizon}
+  n_obs_steps: ${n_obs_steps}
+  n_action_steps: ${n_action_steps}
+  dataset_id: D4RL/kitchen/complete-v2
+  cache_path: data/kitchen_complete_v2_episodes.npz
+  seed: ${training.seed}
+  preprocess: false
+  window_ratio: 0.25
+  noise_std: 0.01
+  train_ratio: 0.7
+  val_ratio: 0.2
+  test_ratio: 0.1
+  split: train
