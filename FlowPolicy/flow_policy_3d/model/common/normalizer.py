@@ -1,12 +1,60 @@
 from typing import Union, Dict
 
 import unittest
-import zarr
+import json
+import os
+import time
 import numpy as np
 import torch
 import torch.nn as nn
 from flow_policy_3d.common.pytorch_util import dict_apply
 from flow_policy_3d.model.common.dict_of_tensor_mixin import DictOfTensorMixin
+
+# region agent log
+def _debug_log(hypothesis_id: str, location: str, message: str, data: Dict) -> None:
+    payload = {
+        "sessionId": "a2c3d3",
+        "runId": "pre-fix",
+        "hypothesisId": hypothesis_id,
+        "location": location,
+        "message": message,
+        "data": data,
+        "timestamp": int(time.time() * 1000),
+    }
+    with open("debug-a2c3d3.log", "a", encoding="utf-8") as f:
+        f.write(json.dumps(payload, ensure_ascii=True) + "\n")
+
+
+# endregion
+
+try:
+    import zarr
+except Exception as exc:
+    # region agent log
+    blosc_attrs = []
+    try:
+        from numcodecs import blosc as _blosc  # type: ignore
+        blosc_attrs = [name for name in ("cbuffer_sizes", "_cbuffer_sizes", "cbuffer_metainfo", "_cbuffer_metainfo") if hasattr(_blosc, name)]
+    except Exception as inner_exc:
+        _debug_log(
+            "H3",
+            "flow_policy_3d/model/common/normalizer.py:33",
+            "numcodecs.blosc inspect failed",
+            {"error_type": type(inner_exc).__name__, "error": str(inner_exc)},
+        )
+    _debug_log(
+        "H1",
+        "flow_policy_3d/model/common/normalizer.py:39",
+        "import zarr failed",
+        {
+            "error_type": type(exc).__name__,
+            "error": str(exc),
+            "python_version": os.sys.version.split()[0],
+            "blosc_attrs_present": blosc_attrs,
+        },
+    )
+    # endregion
+    raise
 
 
 class LinearNormalizer(DictOfTensorMixin):
