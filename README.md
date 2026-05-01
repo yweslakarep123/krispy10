@@ -81,3 +81,29 @@ If you have any questions, feel free to contact Qinglun Zhang at [zhangqinglun26
 
 
 # krispy10
+
+
+## Franka Kitchen (Low-dimensional) Experiment Recipe
+
+This repo includes a complete script for your requested experiment setup in Google Colab:
+
+- **Model architecture**: uses `FlowPolicyLowdim` (state/low-dimensional encoder), not point clouds.
+- **Dataset**: Minari `D4RL/kitchen/complete-v2` (cached to `data/kitchen_complete_v2_episodes.npz`).
+- **Seeds**: `0, 42, 101`.
+- **Training types**:
+  1. `with_preprocess`: sliding window with ratio `0.25` and stride `1`, then split `70/20/10`; train split gets Gaussian noise.
+  2. `no_preprocess`: baseline training without preprocessing pipeline.
+- **Hyperparameter tuning**: random search with `n_iter=100`, cross-validation `cv=5`.
+- **Outputs**: 6 trained runs, success-rate plot, best-model selection, and inference report (success rate, latency, video).
+
+Run:
+
+```bash
+bash scripts/run_kitchen_experiment_colab.sh
+```
+
+Main artifacts are written to `results_kitchen/`, including:
+- `all_summaries.json`
+- `success_rate.png`
+- `inference_winner/inference_summary.json`
+- `inference_winner/best_model_inference.mp4`
